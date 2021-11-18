@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>VB_Test</RootNamespace>
+    <TargetFramework>net6.0</TargetFramework>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>C:\Users\harpi\source\repos\Programing Language Speed Test\Output\All\Release\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>C:\Users\harpi\source\repos\Programing Language Speed Test\Output\All\Debug\</OutputPath>
+  </PropertyGroup>
+
+</Project>
