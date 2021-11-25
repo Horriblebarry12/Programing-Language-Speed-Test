@@ -1,17 +1,17 @@
-import java.io.Console;
 import java.util.Random;
 
 public class Main {
     private static final double pi = 3.14159265358979;
 
     public static void main(String[] args) {
-        for (int i = 0; i < 100; i++)
+        int numOfTests = Integer.parseInt(args[0]);
+        int iterationsPerTest = Integer.parseInt(args[1]);
+
+        for (int i = 0; i < numOfTests; i++)
         {
-
-
             long start = System.nanoTime();
             double calculation = 0;
-            for (int n = 0; n < 10000; n++)
+            for (int n = 0; n < iterationsPerTest; n++)
             {
                 calculation += Calculate(pi, calculation);
             }

@@ -7,8 +7,10 @@ class Program
 
 	static void Main(string[] args)
 	{
-		DateTime totalStart = DateTime.Now;
-		for (int i = 0; i < 100; i++)
+
+		int numOfTests = int.Parse(args[0]);
+		int iterationsPerTest = int.Parse(args[1]);
+		for (int i = 0; i < numOfTests; i++)
 		{
 
 
@@ -16,9 +18,9 @@ class Program
 
 			double calculation = 0;
 
-			for (int n = 0; n < 10000; n++)
+			for (int n = 0; n < iterationsPerTest; n++)
 			{
-				calculation += Calculate(pi, calculation);
+				calculation += Calculate(pi, calculation)/10;
 			}
 
 			DateTime end = DateTime.Now;
@@ -29,10 +31,7 @@ class Program
 			Console.Write(elapsed_seconds.TotalMilliseconds + " ");
 		}
 
-		DateTime totalEnd = DateTime.Now;
-
-		TimeSpan total_elapsed_seconds = totalEnd - totalStart;
-	}	
+	}
 
 	static double Calculate(double pi, double x)
 	{

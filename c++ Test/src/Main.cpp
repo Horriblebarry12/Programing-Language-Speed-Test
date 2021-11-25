@@ -13,19 +13,29 @@ public:
 	{
 
 	};
-	void RunTest();
+	void RunTest(char* args[]);
 private:
 	double Calculate(double, double);
 	double pi;
 
 };
 
-void Test::RunTest()
+void Test::RunTest(char* args[])
 {
-	// Yes I do know auto isn't slower
 
-	std::chrono::system_clock::time_point totalStart = std::chrono::system_clock::now();
-	for (int i = 0; i < 100; i++)
+	int numOfTests;
+	int iterationsPerTest;
+	{
+		std::stringstream ssN;
+		ssN << args[1];
+		ssN >> numOfTests;
+
+		std::stringstream ssI;
+		ssI << args[2];
+		ssI >> iterationsPerTest;
+	}
+
+	for (int i = 0; i < numOfTests; i++)
 	{
 
 
@@ -33,9 +43,9 @@ void Test::RunTest()
 
 		auto calculation = 0.0;
 
-		for (int n = 0; n < 10000; n++)
+		for (int n = 0; n < iterationsPerTest; n++)
 		{
-			calculation += Calculate(pi, calculation);
+			calculation += Calculate(pi, calculation)/10;
 		}
 
 		std::chrono::system_clock::time_point end = std::chrono::system_clock::now();
@@ -43,14 +53,7 @@ void Test::RunTest()
 		std::chrono::duration<double> elapsed_seconds = end - start;
 
 		std::cout << elapsed_seconds.count() * 1000 << " ";
-		//std::cout << "Interation: " << i << "\n";
 	}
-
-	std::chrono::system_clock::time_point totalEnd = std::chrono::system_clock::now();
-
-	std::chrono::duration<double, std::ratio<1, 1000>> elapsed_seconds = totalEnd - totalStart;
-
-	//std::cout << "Total Time: " << elapsed_seconds.count() << "\n";
 }
 
 double Test::Calculate(double pi, double x)
@@ -65,7 +68,7 @@ int main(int argc, char* argv[])
 {
 	Test test(pi);
 
-	test.RunTest();
+	test.RunTest(argv);
 
 	return 0;
 }

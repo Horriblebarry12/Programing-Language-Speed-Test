@@ -1,6 +1,7 @@
 import math
 import random
 import time
+import sys
 
 piNum = 3.14159265358979
 
@@ -16,12 +17,15 @@ class Test:
         
 
     def RunTest(self):
-    
-        for i in range(100):
+        numOfTests = int(sys.argv[1], base=10)
+        iterationsPerTest = int(sys.argv[2], base=10)
+
+
+        for i in range(numOfTests):
 
             StartTime = time.time()
             calculation = 0;
-            for n in range(10000):
+            for n in range(iterationsPerTest):
                 calculation += self.Calculate(self.pi, calculation)/10
             EndTime = time.time()
 

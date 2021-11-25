@@ -1,2 +1,2 @@
 @echo off
-node Javascript_Test.js
+node Javascript_Test.js %1 %2

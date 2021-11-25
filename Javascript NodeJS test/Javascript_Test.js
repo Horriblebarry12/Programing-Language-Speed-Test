@@ -1,7 +1,6 @@
 'use strict';
 
 
-
 class Test {
 
 	pi = 3.14159265358979;
@@ -11,14 +10,20 @@ class Test {
 	}
 
 	StartTest() {
-		for (var i = 0; i < 100; i++)
+		var args = process.argv.slice(2);
+
+		var numOfTests = Number(args[0]);
+		var iterationsPerTest = Number(args[1]);
+
+
+		for (var i = 0; i < numOfTests; i++)
 		{
 
 			let start = performance.now();
 			var calculation = 0.0;
-			for (var n = 0; n < 10000; n++)
+			for (var n = 0; n < iterationsPerTest; n++)
 			{
-				calculation += this.Calculate(this.pi, calculation);
+				calculation += this.Calculate(this.pi, calculation)/10;
 			}
 
 			let end = performance.now();

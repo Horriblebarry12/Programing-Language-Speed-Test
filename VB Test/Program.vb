@@ -4,15 +4,20 @@ Module Program
 	Const pi = 3.14159265358979
 
 	Sub Main(args As String())
-		Dim totalStart = DateTime.Now
-		For index = 1 To 100
+
+
+
+		Dim numOfTests = Integer.Parse(args(0))
+		Dim iterationsPerTest = Integer.Parse(args(1))
+
+
+		For index = 1 To numOfTests
 			Dim starttime = DateTime.Now
 
 			Dim calculation = 0.0
-			For n = 1 To 10000
-				calculation += Calculate(pi, calculation)
+			For n = 1 To iterationsPerTest
+				calculation += Calculate(pi, calculation) / 2
 			Next
-
 
 			Dim endtime = DateTime.Now
 
@@ -22,10 +27,6 @@ Module Program
 			Console.Write(elapsed_seconds.TotalMilliseconds.ToString() + " ")
 		Next
 
-
-		Dim totalEnd = DateTime.Now
-
-		Dim total_elapsed_seconds = totalEnd - totalStart
 	End Sub
 
 	Public Function Calculate(pi As Double, x As Double) As Double
